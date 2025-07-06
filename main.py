@@ -7,6 +7,11 @@ def main():
     if len(sys.argv) < 2:
         print("Usage: python3 main.py <path_to_book>")
         sys.exit(1)
+    try:
+        book_text = get_book_text(sys.argv[1])
+    except FileNotFoundError:
+        print(f"Could not find the file: {sys.argv[1]}")
+        sys.exit(1)
     book_text = get_book_text(sys.argv[1])
     count = word_count(book_text)
     word_count_message = f"Found {count} total words"
